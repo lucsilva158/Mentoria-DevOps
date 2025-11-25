@@ -23,7 +23,7 @@ jobs:
     - name: Instalar dependências
       run: |
         pip install --no-cache-dir -r requirements.txt
-      name: Rodar testes
+    - name: Rodar testes
       run: pytest -v
 
     - name: Verificar se a API está executando
@@ -36,7 +36,7 @@ jobs:
       run: |
         docker build -t minha-api:ci .
       
-      name: Rodar container para teste
+    - name: Rodar container para teste
       run: |
         docker run -d --name api-test -p 8000:8000 mentoria-api:latest
         sleep 5
