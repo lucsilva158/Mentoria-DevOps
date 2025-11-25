@@ -36,7 +36,6 @@ jobs:
       run: |
         docker build -t minha-api:ci .
       
-
       name: Rodar container para teste
       run: |
         docker run -d --name api-test -p 8000:8000 mentoria-api:latest
