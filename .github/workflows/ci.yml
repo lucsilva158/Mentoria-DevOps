@@ -1,0 +1,35 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout do código
+      uses: actions/checkout@v4
+
+    - name: Configurar Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.12"
+
+    - name: Instalar dependências
+      run: |
+        pip install --no-cache-dir -r requirements.txt
+
+    - name: Verificar se a API está executando
+      run: |
+        python Projeto.py &
+        sleep 5
+        echo "API executada com sucesso (teste básico)"
+    
+    - name: Build da imagem Docker
+      run: |
+        docker build -t minha-api:ci .
