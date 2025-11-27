@@ -38,7 +38,7 @@ jobs:
     
     - name: Build da imagem Docker
       run: |
-        docker build -t minha-api:ci .
+        docker build -t mentoria-api:latest .
       
     - name: Rodar container para teste
       run: |
